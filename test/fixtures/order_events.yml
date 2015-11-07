@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  previous_state: MyString
+  current_state: MyString
+  order_id: 
+  notes: MyString
+
+two:
+  previous_state: MyString
+  current_state: MyString
+  order_id: 
+  notes: MyString
