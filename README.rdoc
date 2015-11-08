@@ -2,14 +2,12 @@
 
 {<img src="https://circleci.com/gh/rubyrider/dhopers.svg?style=svg&circle-token=9a2d42f0e352cf12371dc5408c1e3ba33730d9bf" alt="Circle CI" />}[https://circleci.com/gh/rubyrider/dhopers]
 
+== How to create pull request
+git@github.com:rubyrider/dhopers.git ```
+git checkout -b 'feature/your-feature-name' && cd _
 
-## How to create pull request
-``` git@github.com:rubyrider/dhopers.git ```
-
-``` git checkout -b 'feature/your-feature-name'```
-
-``` bundle install ```
-``` bundle exec rake db:migrate ```
-``` bundle exec rake spec ```
+bundle install
+bundle exec rake db:migrate
+bundle exec rake spec
 
 Before every commit make sure all your test passes. Add a meaning full commit message. Push to your branch. Create pull request.
