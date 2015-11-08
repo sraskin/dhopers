@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108144629) do
+ActiveRecord::Schema.define(version: 20151108153636) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -75,8 +75,15 @@ ActiveRecord::Schema.define(version: 20151108144629) do
     t.integer  "order_receiver_id", limit: 4
     t.boolean  "cr",                limit: 1
     t.datetime "requested_at"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.string   "full_name",         limit: 255
+    t.string   "email",             limit: 255
+    t.string   "phone",             limit: 255
+    t.string   "address",           limit: 255
+    t.string   "city",              limit: 255, default: "Dhaka"
+    t.string   "country",           limit: 255, default: "Bangladesh"
+    t.string   "post",              limit: 255
   end
 
   add_index "orders", ["order_receiver_id"], name: "index_orders_on_order_receiver_id", using: :btree

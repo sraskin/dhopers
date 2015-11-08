@@ -44,7 +44,7 @@ RSpec.describe Customer::OrdersController, type: :controller do
     end
 
     it "assigns the requested customer_order as @customer_order" do
-      expect(assigns(:customer_order)).to eq(order)
+      expect(assigns(:order)).to eq(order)
     end
 
   end
@@ -55,7 +55,7 @@ RSpec.describe Customer::OrdersController, type: :controller do
     end
 
     it "assigns a new customer_order as @customer_order" do
-      expect(assigns(:customer_order)).to be_a_new(Order)
+      expect(assigns(:order)).to be_a_new(Order)
     end
   end
 
@@ -67,7 +67,7 @@ RSpec.describe Customer::OrdersController, type: :controller do
     end
 
     it "assigns the requested customer_order as @customer_order" do
-      expect(assigns(:customer_order)).to eq(order)
+      expect(assigns(:order)).to eq(order)
     end
   end
 
@@ -81,36 +81,14 @@ RSpec.describe Customer::OrdersController, type: :controller do
 
       it "assigns a newly created customer_order as @customer_order" do
         post :create, {:customer_order => valid_attributes}, valid_session
-        expect(assigns(:customer_order)).to be_a(Order)
-        expect(assigns(:customer_order)).to be_persisted
+        expect(assigns(:order)).to be_a(Order)
+        expect(assigns(:order)).to be_persisted
       end
 
       it "redirects to the created customer_order" do
         post :create, {:customer_order => valid_attributes}, valid_session
         expect(response).to redirect_to(customer_order_path(Order.last))
       end
-    end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        attributes_for(:order)
-      }
-
-      let!(:order) { create(:order) }
-
-      it "updates the requested customer_order" do
-        put :update, {:id => order.to_param, :customer_order => new_attributes}, valid_session
-        order.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "assigns the requested customer_order as @customer_order" do
-        put :update, {:id => order.to_param, :customer_order => valid_attributes}, valid_session
-        expect(assigns(:customer_order)).to eq(order)
-      end
-
     end
   end
 

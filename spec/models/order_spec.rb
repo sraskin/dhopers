@@ -71,13 +71,13 @@ RSpec.describe Order, type: :model do
       let(:order) { create(:order, :requested) }
       let(:orders) { create_list(:order, 1000000000, :requested) }
 
-        it "should have a order number" do
-          expect(order.order_number).to be_present
-        end
+      it "should have a order number" do
+        expect(order.order_number).to be_present
+      end
 
-        it 'should be unique' do
-          expect(Order.where.not(id: order.id).exists?(order_number: order.order_number)).to be_falsey
-        end
+      it 'should be unique' do
+        expect(Order.where.not(id: order.id).exists?(order_number: order.order_number)).to be_falsey
+      end
     end
   end
 
@@ -89,5 +89,22 @@ RSpec.describe Order, type: :model do
     it "creates a payment history" do
       expect { subject }.to change(Payment, :count).by(1)
     end
+  end
+
+  describe "#assign_user_information" do
+    let!(:order) { create(:order, :requested) }
+
+    before { order.assign_user_information }
+
+    context 'with valid data' do
+      it 'assigns users full name to order instance' do
+        expect(order.full_name).to be_present
+      end
+
+      it 'assigns users email address to order' do
+        expect(order.email).to be_present
+      end
+    end
+
   end
 end

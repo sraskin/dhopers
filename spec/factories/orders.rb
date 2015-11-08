@@ -4,6 +4,8 @@ FactoryGirl.define do
     amount 200
     notes nil
     order_number nil
+    phone '+8801766678130'
+    address "49, North Road, Dhanmondi, Dhaka-1205"
 
     trait :requested do
       aasm_state Order::REQUESTED
