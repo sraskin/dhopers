@@ -28,9 +28,9 @@ module Laundry
     ActionMailer::Base.smtp_settings = {
         :address              => 'smtp.mandrillapp.com',
         :port                 => '587',
-        :domain               => '//dhopers.com',
+        :domain               => 'dhopers.com',
         :user_name            => 'irfandhk@gmail.com',
-        :password             => ENV['MANDRIL_API_KEY'],
+        :password             => 'dpj0PNRIBKVo7qqUkfQ6sw',
         :authentication       => 'plain',
         :enable_starttls_auto => true
     }

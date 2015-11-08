@@ -76,6 +76,17 @@ class Order < ActiveRecord::Base
 
   private
 
+  def send_order_notification
+    if self.aasm_state == Order::ACCEPTED.to_s
+      OrderEventMailer.order_received(self, self.user).deliver
+    elsif self.aasm_state == Order::PROCESSED.to_s
+      OrderEventMailer.order_processed(self, self.user).deliver
+    elsif self.aasm_state == Order::DELIVERED.to_s
+      OrderEventMailer.order_delivery_notification(self, self.user).deliver
+      create_payment_history
+    end
+  end
+
   def trigger_order_events
     self.order_events.create!(current_state: self.aasm_state, previous_state: self.aasm_state_was || 'requested' ,user: self.user)
   end
@@ -87,18 +98,6 @@ class Order < ActiveRecord::Base
   def get_order_number
     "#{Order::ORDER_BASE_NUMBER + Order.maximum(:id).to_i.next}"
   end
-
-  def send_order_notification
-    if self.aasm_state == Order::ACCEPTED.to_s
-      OrderEventMailer.order_received(self, self.user)
-    elsif self.aasm_state == Order::PROCESSED.to_s
-      OrderEventMailer.order_processed(self, self.user)
-    elsif self.aasm_state == Order::DELIVERED.to_s
-       OrderEventMailer.order_delivery_notification(self, self.user)
-       create_payment_history
-    end
-  end
-
 
   def create_payment_history
     self.payments.create!(
