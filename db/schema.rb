@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108153636) do
+ActiveRecord::Schema.define(version: 20151108172115) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20151108153636) do
     t.string   "city",              limit: 255, default: "Dhaka"
     t.string   "country",           limit: 255, default: "Bangladesh"
     t.string   "post",              limit: 255
+    t.integer  "item_count",        limit: 4,   default: 1,            null: false
   end
 
   add_index "orders", ["order_receiver_id"], name: "index_orders_on_order_receiver_id", using: :btree
@@ -146,6 +147,7 @@ ActiveRecord::Schema.define(version: 20151108153636) do
     t.integer  "failed_attempts",        limit: 4,   default: 0,  null: false
     t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
+    t.string   "phone",                  limit: 255
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

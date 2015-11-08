@@ -47,13 +47,13 @@
       <a class="w-nav-link nav-link" href="/faq">Faq</a>
       <a class="w-button download-btn-top" href="/downloads">Download</a>
 
-      <% if current_user  %>
-          <a class="w-nav-link nav-link" href="/users/sign_out" >Welcome <%= current_user.first_name %></a>
+      <% if current_user %>
+          <a class="w-nav-link nav-link" href="<%= customer_orders_path %>">Welcome <%= current_user.first_name %></a>
           <a class="w-nav-link nav-link" href="/users/sign_out" data-method="delete">Sign Out</a>
-          <% else %>
+      <% else %>
           <a class="w-nav-link nav-link" href="/users/sign_in">Sign In</a>
           <a class="w-nav-link nav-link" href="/users/sign_up">Sign Up</a>
-    <% end %>
+      <% end %>
     </nav>
     <div class="w-nav-overlay" data-wf-ignore=""></div>
   </div>
@@ -64,12 +64,13 @@
       <div class="w-container hero-text">
         <h1 class="main-heading">On Demand laundry and dry cleaning in <span id="bdtext">Bangladesh</span></h1>
 
-        <p class="main-subtitle">Get your laundry and dry cleaning picked-up, cleaned and dropped-off with just two taps on
+        <p class="main-subtitle">Get your laundry and dry cleaning picked-up, cleaned and dropped-off with just two taps
+          on
           your phone or order online now.</p>
       </div>
       <div class="area-dropdown">
         <div class="w-container">
-          <a class="w-button place-order-btn" style="text-decoration:none" href="<%= customer_orders_path %>" data-method="POST">Post
+          <a class="w-button place-order-btn" style="text-decoration:none" href="<%= new_customer_order_path %>">Post
             Your Order</a>
           <a class="w-button place-order-btn2" style="text-decoration:none" href="/track.php">Track
             Your Order</a>
@@ -77,7 +78,17 @@
       </div>
   <% end %>
 </div>
-<%= yield %>
+<div class="row" style="margin-top: 20px">
+  <% if controller_name == 'static'.freeze && action_name == 'home'.freeze %>
+      <%= yield %>
+  <% else %>
+      <div class="w-container">
+        <div class="w-embed w-script">
+          <%= yield %>
+        </div>
+      </div>
+  <% end %>
+</div>
 <div class="w-section section footer">
   <div class="w-container">
     <div class="w-row">
