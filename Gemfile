@@ -51,6 +51,8 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'aasm'
 
 gem 'cancancan'
+gem 'sidekiq'
+gem 'sidekiq-cron'
 
 
 

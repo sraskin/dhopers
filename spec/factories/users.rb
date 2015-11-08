@@ -3,7 +3,7 @@ FactoryGirl.define do
     first_name 'Irfan'
     last_name 'Ahmed'
     sequence :email do |n|
-      "person-#{n}@example.com"
+      "person-#{n}#{Time.now.to_i}@example.com"
     end
     password 'passw0rd'
 

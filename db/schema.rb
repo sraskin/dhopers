@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107114115) do
+ActiveRecord::Schema.define(version: 20151108144629) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -82,6 +82,40 @@ ActiveRecord::Schema.define(version: 20151107114115) do
   add_index "orders", ["order_receiver_id"], name: "index_orders_on_order_receiver_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
+  create_table "payments", force: :cascade do |t|
+    t.integer  "order_id",        limit: 4
+    t.boolean  "due",             limit: 1
+    t.float    "amount",          limit: 24
+    t.string   "notes",           limit: 255
+    t.integer  "collected_by_id", limit: 4
+    t.integer  "number_of_items", limit: 4,   default: 1, null: false
+    t.float    "discount",        limit: 24
+    t.float    "final_price",     limit: 24
+    t.integer  "reviewed_by_id",  limit: 4
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
+  add_index "payments", ["collected_by_id"], name: "index_payments_on_collected_by_id", using: :btree
+  add_index "payments", ["order_id"], name: "index_payments_on_order_id", using: :btree
+  add_index "payments", ["reviewed_by_id"], name: "index_payments_on_reviewed_by_id", using: :btree
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "order_id",       limit: 4
+    t.integer  "user_id",        limit: 4
+    t.integer  "rate",           limit: 4
+    t.string   "comments",       limit: 255
+    t.integer  "reviewed_by_id", limit: 4
+    t.integer  "reviewed_on",    limit: 4,   default: 0
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "aasm_state",     limit: 255
+  end
+
+  add_index "reviews", ["order_id"], name: "index_reviews_on_order_id", using: :btree
+  add_index "reviews", ["reviewed_by_id"], name: "index_reviews_on_reviewed_by_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name",             limit: 255
     t.string   "last_name",              limit: 255
@@ -98,12 +132,23 @@ ActiveRecord::Schema.define(version: 20151107114115) do
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
     t.integer  "role",                   limit: 4,   default: 0,  null: false
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
+    t.integer  "failed_attempts",        limit: 4,   default: 0,  null: false
+    t.string   "unlock_token",           limit: 255
+    t.datetime "locked_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   add_foreign_key "order_events", "orders"
   add_foreign_key "order_events", "users"
   add_foreign_key "orders", "users"
+  add_foreign_key "reviews", "orders"
+  add_foreign_key "reviews", "users"
 end

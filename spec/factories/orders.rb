@@ -9,6 +9,10 @@ FactoryGirl.define do
       aasm_state Order::REQUESTED
     end
 
+    trait :processed do
+      aasm_state Order::PROCESSED
+    end
+
     trait :call_request do
       cr true
       requested_at { Time.now }

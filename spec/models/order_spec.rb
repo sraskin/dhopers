@@ -80,4 +80,14 @@ RSpec.describe Order, type: :model do
         end
     end
   end
+
+  context "when order delivered" do
+    let(:order) { create(:order, :processed) }
+
+    subject { order.mark_as_delivered! }
+
+    it "creates a payment history" do
+      expect { subject }.to change(Payment, :count).by(1)
+    end
+  end
 end

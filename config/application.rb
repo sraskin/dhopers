@@ -22,5 +22,17 @@ module Laundry
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    ActionMailer::Base.delivery_method = :smtp
+    # Enable sending mail from localhost
+    ActionMailer::Base.smtp_settings = {
+        :address              => 'smtp.mandrillapp.com',
+        :port                 => '587',
+        :domain               => '//dhopers.com',
+        :user_name            => 'irfandhk@gmail.com',
+        :password             => ENV['MANDRIL_API_KEY'],
+        :authentication       => 'plain',
+        :enable_starttls_auto => true
+    }
   end
 end

@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
   get 'static/home'
-
   get '/about' => 'static#about', as: :about
-
   get '/contact' => 'static#contact', as: :contact
-
   get '/terms' => 'static#terms', as: :terms
-
   get '/team' => 'static#team', as: :team
+  get '/how' => 'static#how', as: :how
+  get '/faq' => 'static#faq', as: :faq
+  get '/press' => 'static#press', as: :press
+  get '/pricing' => 'static#pricing', as: :pricing
+  get '/policy' => 'static#policy', as: :policy
+  get '/downloads' => 'static#downloads', as: :downloads
+  get '/coverages' => 'static#coverages', as: :coverages
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -62,7 +65,7 @@ Rails.application.routes.draw do
   #   resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:
-    namespace :customer do
-      resources :orders
-    end
+  namespace :customer do
+    resources :orders
+  end
 end
