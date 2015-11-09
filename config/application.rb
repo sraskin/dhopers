@@ -25,7 +25,7 @@ module Laundry
 
     ActionMailer::Base.delivery_method = :smtp
     # Enable sending mail from localhost
-    ActionMailer::Base.smtp_settings = {  
+    ActionMailer::Base.smtp_settings = {
         :address              => 'smtp.mandrillapp.com',
         :port                 => '587',
         :domain               => '//staging.dhopers.com',
