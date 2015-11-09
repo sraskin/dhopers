@@ -13,3 +13,5 @@
 /tmp
 .idea
 config/initializers/secrets.rb
+config/deploy.rb
+config/deploy

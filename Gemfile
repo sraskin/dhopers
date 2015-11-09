@@ -60,3 +60,11 @@ gem "country_select"
 
 
 
+###########################
+group :development do
+  gem 'capistrano', '~> 3.2.1'
+  gem 'rvm1-capistrano3', require: false
+  gem 'capistrano3-nginx_unicorn'
+  gem 'capistrano-rails', '~> 1.1'
+end
+###########################
