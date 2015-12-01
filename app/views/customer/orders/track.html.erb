@@ -1,0 +1,17 @@
+<div class="w-section section" id="features">
+
+  <div class="w-container">
+    <div class="w-row feature-row">
+
+      <% if @order.aasm_state.to_s == 'collecting' %>
+          <img src="/assets/step2.jpg" width="90%" style="margin-left: 20px">
+      <% elsif @order.aasm_state.to_s == 'processing' %>
+          <img src="/assets/step3.jpg" width="90%" style="margin-left: 20px">
+      <% elsif @order.aasm_state.to_s == 'delivered' %>
+          <img src="/assets/step4.jpg" width="90%" style="margin-left: 20px">
+      <% elsif @order.aasm_state.to_s == 'requested' %>
+          <img src="/assets/step1.jpg" width="90%" style="margin-left: 20px">
+    <% end %>
+    </div>
+  </div>
+</div>

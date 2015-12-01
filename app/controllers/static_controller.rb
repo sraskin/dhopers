@@ -24,7 +24,7 @@ class StaticController < ApplicationController
   end
 
   def pricing
-
+    @prices = Price.all
   end
 
   def downloads

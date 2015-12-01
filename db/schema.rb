@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108172115) do
+ActiveRecord::Schema.define(version: 20151130194513) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -107,6 +107,14 @@ ActiveRecord::Schema.define(version: 20151108172115) do
   add_index "payments", ["collected_by_id"], name: "index_payments_on_collected_by_id", using: :btree
   add_index "payments", ["order_id"], name: "index_payments_on_order_id", using: :btree
   add_index "payments", ["reviewed_by_id"], name: "index_payments_on_reviewed_by_id", using: :btree
+
+  create_table "prices", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.integer  "dry_cleaning_price", limit: 4
+    t.integer  "laundry_price",      limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "order_id",       limit: 4

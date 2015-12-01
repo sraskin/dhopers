@@ -1,0 +1,21 @@
+<h2>Pricing of our Services</h2>
+<div class='col-xs-12'>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <th>Article</th>
+    <th>Dry Cleaning Price</th>
+    <th>Laundry Price</th>
+    <th>Last Updated Price</th>
+    </thead>
+    <tbody>
+    <% @prices.each do |price| %>
+        <tr>
+          <td><%= price.name %></td>
+          <td><%= number_to_currency price.dry_cleaning_price, unit: raw('&nbsp;BDT&nbsp;') %></td>
+          <td><%= number_to_currency price.laundry_price, unit: raw('&nbsp;BDT&nbsp;') %></td>
+          <td><%= time_ago_in_words(price.updated_at) %>&nbsp; ago</td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -66,6 +66,10 @@ Rails.application.routes.draw do
 
   # Example resource route within a namespace:
   namespace :customer do
-    resources :orders
+    resources :orders do
+      collection do
+        get :track
+      end
+    end
   end
 end

@@ -1,11 +1,11 @@
 module Customer
   class OrdersController < CustomerController
-    before_action :set_customer_order, only: [:show, :edit, :update, :destroy]
+    before_action :set_customer_order, only: [:show, :edit, :update, :destroy, :track]
 
     # GET /customer/orders
     # GET /customer/orders.json
-    before_action :authenticate_user!
-    before_filter :prevent_non_customer_user
+    before_action :authenticate_user!, except: [:track]
+    before_filter :prevent_non_customer_user, except: [:track]
 
     def index
       @customer_orders = current_user.orders
@@ -14,6 +14,13 @@ module Customer
     # GET /customer/orders/1
     # GET /customer/orders/1.json
     def show
+    end
+
+    def track
+      if params[:id].blank?
+        redirect_to root_url, notice: 'Please enter your tracking id and try again'
+      end
+
     end
 
     # GET /customer/orders/new

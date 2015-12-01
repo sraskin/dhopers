@@ -12,5 +12,10 @@
  *
  *= require_tree .
  *= stub active_admin
+ *= require bootstrap-material-design
  *= require_self
  */
+
+body {
+    background-color: #fff !important;
+}
