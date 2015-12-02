@@ -1422,7 +1422,7 @@ p {
   padding-top: 0px;
   padding-bottom: 0px;
   background-color: #4dbd90;
-  background-image: radial-gradient(circle at 50% 50%, rgba(72, 159, 217, 0.74), rgba(72, 159, 217, 0.74)), url(hang1.jpg);
+  background-image: radial-gradient(circle at 50% 50%, rgba(72, 159, 217, 0.74), rgba(72, 159, 217, 0.74)), asset-data-url('hang1.jpg');
   background-position: 0% 0%, 0% 0%, 0% 0%, 0% 23%;
   background-size: cover, cover, cover, cover;
   color: white;
@@ -1430,8 +1430,8 @@ p {
 }
 .section.main.inner-pages {
   background-color: #489fd9;
-  background-image: -webkit-radial-gradient(50% 50%, circle, rgba(72, 159, 217, 0.74), rgba(72, 159, 217, 0.74)), url(spin.jpg), url(wood.jpg);
-  background-image: radial-gradient(circle at 50% 50%, rgba(72, 159, 217, 0.74), rgba(72, 159, 217, 0.74)), url(spin.jpg), url(wood.jpg);
+  background-image: -webkit-radial-gradient(50% 50%, circle, rgba(72, 159, 217, 0.74), rgba(72, 159, 217, 0.74)), asset-data-url('spin.jpg'), asset-data-url('wood.jpg');
+  background-image: radial-gradient(circle at 50% 50%, rgba(72, 159, 217, 0.74), rgba(72, 159, 217, 0.74)), asset-data-url('spin.jpg'), asset-data-url('wood.jpg');
   background-position: 0px 0px, 50% 50%, 50% 16%;
   background-size: auto, cover, cover;
 }
@@ -1439,7 +1439,7 @@ p {
   background-color: #f0f0f0;
 }
 .section.image {
-  background-image: url(town.jpg);
+  background-image: asset-data-url('town.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: white;
@@ -1462,7 +1462,7 @@ p {
   padding-top: 100px;
   padding-bottom: 100px;
 
-  background-image: url(wood.jpg);
+  background-image: asset-data-url('wood.jpg');
   background-position: 0px 0px, 0px 0px;
   /*background-size: auto, cover;*/
   background-repeat: no-repeat, no-repeat;
