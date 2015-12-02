@@ -38,14 +38,14 @@
 </div>
 <div class="w-section section main" id="top">
   <div class="w-nav navigation" data-collapse="medium" data-animation="default" data-duration="400">
-    <a class="w-nav-brand brand-link w--current" href="/"><img src="/assets/55b35750e11cffd340a35849_logo-hero.png" width="30%"></a>
+    <a class="w-nav-brand brand-link w--current" href="/">
+      <img src="<%= asset_path('55b35750e11cffd340a35849_logo-hero.png')%>" width="30%">
+    </a>
 
     <nav class="w-nav-menu nav-menu" role="navigation">
       <a class="w-nav-link nav-link" href="/how">How it works</a>
       <a class="w-nav-link nav-link" href="/pricing">Prices</a>
-
-      <a class="w-nav-link nav-link" href="/faq">Faq</a>
-      <a class="w-button download-btn-top" href="/downloads">Download</a>
+      <!--<a class="w-button download-btn-top" href="/downloads">Download</a>-->
 
       <% if current_user %>
           <a class="w-nav-link nav-link" href="<%= customer_orders_path %>">Welcome <%= current_user.first_name %></a>
@@ -59,7 +59,7 @@
   </div>
   <% if controller_name == 'static'.freeze && action_name == 'home'.freeze %>
       <div class="w-container logo-head">
-        <img src="/assets/55b35750e11cffd340a35849_logo-hero.png" width="194">
+        <img src="<%= asset_path('55b35750e11cffd340a35849_logo-hero.png')%>" width="194">
       </div>
       <div class="w-container hero-text">
         <h1 class="main-heading">On Demand laundry and dry cleaning in <span id="bdtext">Bangladesh</span></h1>
@@ -93,7 +93,7 @@
   <div class="w-container">
     <div class="w-row">
       <div class="w-col w-col-6">
-        <img src="/assets/55b35750e11cffd340a35849_logo-hero.png" width="167">
+        <img src="<%= asset_path('55b35750e11cffd340a35849_logo-hero.png')%>" width="167">
 
         <div class="footer-slogan">Get latest offers in your inbox</div>
         <div class="w-form newsletter-form">
@@ -109,17 +109,17 @@
           </div>
         </div>
         <div class="social-icon-group">
-          <a class="w-inline-block social-icon" href="https://www.facebook.com/washplusuae/messages/" target="_blank">
-            <img src="/assets/537ac6905e68599506078cd0_facebook-icon.svg">
+          <a class="w-inline-block social-icon" href="https://www.facebook.com/" target="_blank">
+            <img src="<%= asset_path('537ac6905e68599506078cd0_facebook-icon.svg')%>">
           </a>
-          <a class="w-inline-block social-icon" href="https://twitter.com/WashPlusApp" target="_blank">
-            <img src="/assets/537ac6fb59179dba333c7d70_twitter-icon.svg">
+          <a class="w-inline-block social-icon" href="https://twitter.com/" target="_blank">
+            <img src="<%= asset_path('537ac6fb59179dba333c7d70_twitter-icon.svg')%>">
           </a>
           <a class="w-inline-block social-icon" href="http://linkedin.com/" target="_blank">
-            <img src="/assets/537ac8e25e68599506078ce2_linkdin-icon-white.svg">
+            <img src="<%= asset_path('537ac8e25e68599506078ce2_linkdin-icon-white.svg')%>">
           </a>
-          <a class="w-inline-block social-icon" href="mailto:info@washplus.net">
-            <img src="/assets/537ac9081e62bebc3395dfda_email-icon-white.svg">
+          <a class="w-inline-block social-icon" href="mailto:linkondhk@gmail.com">
+            <img src="<%= asset_path('537ac9081e62bebc3395dfda_email-icon-white.svg')%>">
           </a>
         </div>
       </div>
@@ -133,12 +133,12 @@
       <div class="w-col w-col-2">
         <h4 class="footer-title">Company</h4>
         <a class="page-link in-footer" href="/about">About&nbsp;</a>
-        <a class="page-link in-footer" href="/contact">Contact</a>
-        <a class="page-link in-footer" href="/press">Press</a>
+        <!--<a class="page-link in-footer" href="/contact">Contact</a>-->
+        <!--<a class="page-link in-footer" href="/press">Press</a>-->
       </div>
       <div class="w-col w-col-2">
         <h4 class="footer-title">Legal</h4>
-        <a class="page-link in-footer" href="/policy">Privacy Policy</a>
+        <!--<a class="page-link in-footer" href="/policy">Privacy Policy</a>-->
         <a class="page-link in-footer" href="/terms">Terms of Use</a>
       </div>
     </div>
