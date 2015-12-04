@@ -39,15 +39,11 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.action_mailer.smtp_settings         = {
-      :address              => "smtp.mandrillapp.com",
-      :port                 => 587,
-      :domain               => 'localhost:3002',
-      :user_name            => "irfandhk@gmail.com",
-      :password             => 'dpj0PNRIBKVo7qqUkfQ6sw',
-      :authentication       => :plain,
-      :enable_starttls_auto => true
-  }
+  # ActionMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.perform_deliveries = true
+  # ActionMailer::Base.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :smtp
+  
 end
 
 Rails.application.routes.default_url_options[:host] = 'localhost:3002'

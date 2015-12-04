@@ -1,5 +1,7 @@
 class SmsService
 
+  require 'open-uri'
+
   ORIGINATOR = 'Dhopers'.freeze
 
   attr_reader :username
@@ -27,10 +29,9 @@ class SmsService
   RESPONSE['INVALID'] = 'Unknown error'.freeze
   RESPONSE['OK']       = 'Sms has been sent successfully'
 
-  def initialize(username = '', password = '', provider = '')
+  def initialize(username = 'odesk.irfan@gmail.com', password = 'bonomali1247')
     @username    = username
     @password    = password
-    @provider    = provider
     @balance_url = 'http://manage.muthofun.com/bulksms/getBALANCE.go'.freeze
     @send_url    = 'http://manage.muthofun.com/bulksms/bulksend.go'.freeze
     @charset     = 0
@@ -40,17 +41,10 @@ class SmsService
   end
 
   def send_sms(recipient, msg_text, showDLR = 1)
-    res = nil
     query_str = "http://manage.muthofun.com/bulksms/bulksend.go?username=odesk.irfan@gmail.com&password=bonomali1247&originator=dhopers.com&phone=#{recipient}&msgtext=#{msg_text}"
+    response = open(query_str).read rescue 'INVALID'
 
-    begin
-      conn      = Faraday.new(:url => query_str)
-      res = conn.get
-    rescue => e
-      return RESPONSE['INVALID']
-    end
-
-    return RESPONSE[res.body]
+    RESPONSE[response]
   end
 
   def test_sms_url
