@@ -78,6 +78,8 @@ class Order < ActiveRecord::Base
     Rails.application.routes.url_helpers.customer_order_url(self)
   end
 
+  private
+
   def send_order_notification
     if self.aasm_state == Order::ACCEPTED.to_s
       OrderEventMailer.order_received(self).deliver_now

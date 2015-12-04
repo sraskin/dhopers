@@ -1,6 +1,6 @@
 class OrderEventMailer < ApplicationMailer
 
-  def order_received(order, url)
+  def order_received(order)
     @order = order
     @user = @order.user
     @url = @order.order_path
@@ -8,7 +8,7 @@ class OrderEventMailer < ApplicationMailer
     mail(to: @user.email, subject: "Dhopers: Your order (##{@order.order_number}) Order Received")
   end
 
-  def order_processed(order, url)
+  def order_processed(order)
     @order = order
     @user = @order.user
     @url = @order.order_path
@@ -16,7 +16,7 @@ class OrderEventMailer < ApplicationMailer
     mail(to: @user.email, subject: "Dhopers: Your order (##{@order.order_number}) has been processed successfully")
   end
 
-  def order_delivery_notification(order, url)
+  def order_delivery_notification(order)
     @order = order
     @user = @order.user
     @url = @order.order_path
