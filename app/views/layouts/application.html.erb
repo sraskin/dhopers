@@ -43,10 +43,12 @@
     <nav class="w-nav-menu nav-menu" role="navigation">
       <a class="w-nav-link nav-link" href="/how">How it works</a>
       <a class="w-nav-link nav-link" href="/pricing">Prices</a>
+      <a class="w-nav-link nav-link" style="text-decoration:none" href="<%= new_customer_order_path %>">Place
+        Your Order</a>
       <!--<a class="w-button download-btn-top" href="/downloads">Download</a>-->
 
       <% if current_user %>
-          <a class="w-nav-link nav-link" href="<%= customer_orders_path %>">Welcome <%= current_user.first_name %></a>
+          <a class="w-nav-link nav-link" href="<%= customer_orders_path %>"><%= current_user.first_name %></a>
           <a class="w-nav-link nav-link" href="/users/sign_out" data-method="delete">Sign Out</a>
       <% else %>
           <a class="w-nav-link nav-link" href="/users/sign_in">Sign In</a>
@@ -68,7 +70,7 @@
       </div>
       <div class="area-dropdown">
         <div class="w-container">
-          <a class="w-button place-order-btn" style="text-decoration:none" href="<%= new_customer_order_path %>">Post
+          <a class="w-button place-order-btn" style="text-decoration:none" href="<%= new_customer_order_path %>">Place
             Your Order</a>
           <a class="w-button place-order-btn2" style="text-decoration:none" href="javascript:void(0)" data-toggle="modal" data-target="#trackMyOrder">Track
             Your Order</a>
@@ -76,7 +78,7 @@
       </div>
   <% end %>
 </div>
-<div class="row" style="margin-top: 20px">
+<div style="margin-top: 20px">
   <% if controller_name == 'static'.freeze %>
       <%= yield %>
   <% else %>
