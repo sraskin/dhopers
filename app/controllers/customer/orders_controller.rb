@@ -76,7 +76,10 @@ module Customer
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer_order
-      @order = Order.find_by(order_number: params[:id])
+      @order = Order.find_by(order_number: params[:id]) rescue nil
+      unless @order
+        redirect_to root_url, notice: 'Invalid order ID.'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
