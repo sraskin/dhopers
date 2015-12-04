@@ -9,8 +9,11 @@ class Order < ActiveRecord::Base
   has_many :payments, dependent: :nullify
 
   after_save :trigger_order_events
-  after_save :send_order_notification
   before_create :generate_order_num
+
+  after_save do
+    self.send_order_notification
+  end
 
   validates :phone, :presence => true
 
@@ -117,7 +120,6 @@ class Order < ActiveRecord::Base
   end
 
   private
-
   def trigger_order_events
     self.order_events.create!(current_state: self.aasm_state, previous_state: self.aasm_state_was || 'requested', user: self.user)
   end
