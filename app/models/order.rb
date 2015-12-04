@@ -82,11 +82,11 @@ class Order < ActiveRecord::Base
 
   def send_order_notification
     if self.aasm_state == Order::ACCEPTED.to_s
-      OrderEventMailer.order_received(self).deliver_now
+      OrderEventMailer.order_received(self).deliver
     elsif self.aasm_state == Order::PROCESSED.to_s
-      OrderEventMailer.order_processed(self).deliver_now
+      OrderEventMailer.order_processed(self).deliver
     elsif self.aasm_state == Order::DELIVERED.to_s
-      OrderEventMailer.order_delivery_notification(self).deliver_now
+      OrderEventMailer.order_delivery_notification(self).deliver
       create_payment_history
     end
   end

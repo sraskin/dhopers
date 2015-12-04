@@ -29,8 +29,8 @@ class SmsService
     @username    = username
     @password    = password
     @provider    = provider
-    @balance_url = 'http://217.118.27.5/bulksms/getBALANCE.go'.freeze
-    @send_url    = 'http://217.118.27.5/bulksms/bulksend.go'.freeze
+    @balance_url = 'http://manage.muthofun.com/bulksms/getBALANCE.go'.freeze
+    @send_url    = 'http://manage.muthofun.com/bulksms/bulksend.go'.freeze
     @charset     = 0
     @utc         = 0
     @msg_type    = ''
