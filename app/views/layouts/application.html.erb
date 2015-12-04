@@ -79,6 +79,7 @@
   <% end %>
 </div>
 <div style="margin-top: 20px">
+  <%=  custom_bootstrap_flash %>
   <% if controller_name == 'static'.freeze %>
       <%= yield %>
   <% else %>
@@ -89,6 +90,7 @@
       </div>
   <% end %>
 </div>
+<div class="clear" style="clear: both; height: 20px;"></div>
 <div class="w-section section footer">
   <div class="w-container">
     <div class="w-row">
