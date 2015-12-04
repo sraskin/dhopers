@@ -40,9 +40,11 @@ module Customer
 
       respond_to do |format|
         if @order.save
-          format.html { redirect_to customer_order_path(@order), notice: 'Order was successfully created.' }
+          flash[:notice] = 'Order was successfully created.'
+          format.html { redirect_to customer_order_path(@order) }
           format.json { render :show, status: :created, location: @order }
         else
+          flash[:error] = 'We are unable to save this order request'
           format.html { render :new }
           format.json { render json: @order.errors, status: :unprocessable_entity }
         end
