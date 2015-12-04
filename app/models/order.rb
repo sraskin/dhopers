@@ -74,15 +74,17 @@ class Order < ActiveRecord::Base
     self.order_number
   end
 
-  private
+  def order_path
+    Rails.application.routes.url_helpers.customer_order_url(self)
+  end
 
   def send_order_notification
     if self.aasm_state == Order::ACCEPTED.to_s
-      OrderEventMailer.order_received(self, self.user).deliver
+      OrderEventMailer.order_received(self).deliver_now
     elsif self.aasm_state == Order::PROCESSED.to_s
-      OrderEventMailer.order_processed(self, self.user).deliver
+      OrderEventMailer.order_processed(self).deliver_now
     elsif self.aasm_state == Order::DELIVERED.to_s
-      OrderEventMailer.order_delivery_notification(self, self.user).deliver
+      OrderEventMailer.order_delivery_notification(self).deliver_now
       create_payment_history
     end
   end
