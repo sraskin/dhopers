@@ -1,5 +1,7 @@
 <h3>Dear <%= @user.first_name %></h3>
-<p>Your order (<%= @order.order_number %>) has been processed. You will receive your item(s) in 24 hours</p>
+<p>Thank you for your order. Please reserve your order number <%= @order.order_number %>&nbsp;</p>
+<p>So you can track your order status anytime</p>
+<p>A person will call you shortly to reconfirm and collect your delivery point</p>
 <p>Click <%= link_to 'here', @url %> to view your order.</p>
 <br />
 <p>Sincerely,</p>

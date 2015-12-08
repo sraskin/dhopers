@@ -1,5 +1,13 @@
-<p>Welcome <%= @email %>!</p>
+<%- user = User.find_by(email: @email)  %>
+<p>Welcome <%= user.full_name %>!</p>
 
+<p>Thank you for signing up with <a href="dhopers.com">Dhopers</a>. </p>
+<p>We need you to validate your email address because you will receive all the notifications here.</p>
+<br />
 <p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'Confirm my email address', confirmation_url(@resource, confirmation_token: @token) %></p>
+<br />
+<p>Regards,</p>
+<p>Team Dhopers</p>
+

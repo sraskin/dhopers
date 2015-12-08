@@ -43,7 +43,6 @@ Rails.application.configure do
   # ActionMailer::Base.perform_deliveries = true
   # ActionMailer::Base.raise_delivery_errors = true
   # config.action_mailer.delivery_method = :smtp
-
 end
 
 Rails.application.routes.default_url_options[:host] = 'localhost:3002'

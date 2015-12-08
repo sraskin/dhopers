@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   has_many :orders
@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :presence => true
 
+  after_create :notify_operations_team
+
   def full_name
     [first_name, last_name].compact.join(' ')
   end
@@ -43,6 +45,16 @@ class User < ActiveRecord::Base
 
   def manager?
     self.role == User::MANAGER
+  end
+
+  def notify_operations_team
+    self.send_confirmation_instructions
+    AdminNotificaitonMailer.new_user(self).deliver
+  end
+
+  protected
+  def confirmation_required?
+    false
   end
 
 end

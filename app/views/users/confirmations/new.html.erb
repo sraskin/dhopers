@@ -1,16 +1,17 @@
-<h2>Resend confirmation instructions</h2>
+<div class="col-xs-9 col-md-offset-1">
+  <h2>Resend confirmation instructions</h2>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, role: 'form', class: 'form form-inline'  }) do |f| %>
+      <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %> 
-  </div>
+      <div class="form-group col-xs-12">
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
+      <div class="actions col-md-offset-3">
+        <%= f.submit "Send me reset password instructions", class: 'btn btn-success' %>
+      </div>
+  <% end %>
 
-<%= render "users/shared/links" %>
+  <%= render "users/shared/links" %>
+</div>
