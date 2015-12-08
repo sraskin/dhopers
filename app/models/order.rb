@@ -98,7 +98,9 @@ class Order < ActiveRecord::Base
       self.sms_service.send_sms(self.phone, self.order_sms_txt)
     end
 
-    if self.aasm_state == Order::ACCEPTED.to_s
+    if self.aasm_state == Order::REQUESTED.to_s
+      OrderEventMailer.thank_you(self).deliver_now
+    elsif self.aasm_state == Order::ACCEPTED.to_s
       OrderEventMailer.order_received(self).deliver_now
     elsif self.aasm_state == Order::PROCESSED.to_s
       OrderEventMailer.order_processed(self).deliver_now
