@@ -8,8 +8,4 @@ class AdminNotificaitonMailer < ApplicationMailer
     @user = user
     mail(to: ADMINS, subject: "Dhopers: New user just signed up!")
   end
-
-  def new_order_received
-
-  end
 end
